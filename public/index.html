@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Sync</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <h1>Listen Together</h1>
+
+    <button id="toggleDarkMode" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
 
     <div id="room-controls">
         <label for="roomId">Room ID:</label>
@@ -15,7 +18,8 @@
         <button id="joinBtn">Join Room</button>
     </div>
 
-    <div id="player-controls" style="display: none;"> <p>Connected to Room: <strong id="currentRoom"></strong></p>
+    <div id="player-controls" style="display: none;">
+        <p>Connected to Room: <strong id="currentRoom"></strong></p>
         <hr>
         <label for="songUrl">Song URL (MP3):</label>
         <input type="text" id="songUrl" placeholder="https://example.com/track.mp3">
@@ -27,5 +31,25 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleDarkModeButton = document.getElementById('toggleDarkMode');
+            const body = document.body;
+
+            body.classList.add('dark-mode'); // Set dark mode as default
+            localStorage.setItem('darkMode', 'enabled'); // Save default preference
+
+            toggleDarkModeButton.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                const isLightMode = body.classList.contains('light-mode');
+                localStorage.setItem('darkMode', isLightMode ? 'disabled' : 'enabled');
+                // Update icon based on the mode
+                toggleDarkModeButton.innerHTML = isLightMode ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            });
+
+            // Set initial icon based on default dark mode
+            toggleDarkModeButton.innerHTML = '<i class="fas fa-moon"></i>';
+        });
+    </script>
 </body>
 </html>
