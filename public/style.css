@@ -1,0 +1,41 @@
+/* public/style.css */
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+#room-controls, #player-controls {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin-right: 5px;
+    min-width: 200px;
+}
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+hr {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+#status {
+    margin-top: 10px;
+    color: #555;
+}

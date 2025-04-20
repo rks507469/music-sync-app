@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Sync</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Listen Together</h1>
+
+    <div id="room-controls">
+        <label for="roomId">Room ID:</label>
+        <input type="text" id="roomId" placeholder="Enter a room name">
+        <button id="joinBtn">Join Room</button>
+    </div>
+
+    <div id="player-controls" style="display: none;"> <p>Connected to Room: <strong id="currentRoom"></strong></p>
+        <hr>
+        <label for="songUrl">Song URL (MP3):</label>
+        <input type="text" id="songUrl" placeholder="https://example.com/track.mp3">
+        <button id="loadBtn">Load Song</button>
+        <hr>
+        <audio id="audioPlayer" controls></audio>
+        <p id="status">Status: Not connected</p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
